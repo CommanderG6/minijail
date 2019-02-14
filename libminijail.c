@@ -2039,7 +2039,7 @@ void API minijail_enter(const struct minijail *j)
 		 */
 		drop_ugid(j);
 		drop_caps(j, last_valid_cap);
-		set_seccomp_filter(j);
+		//set_seccomp_filter(j);
 	} else {
 		/*
 		 * If we're not setting no_new_privs,
@@ -2048,7 +2048,7 @@ void API minijail_enter(const struct minijail *j)
 		 * setgroups()/setresgid()/setresuid() for dropping root and
 		 * capget()/capset()/prctl() for dropping caps.
 		 */
-		set_seccomp_filter(j);
+		//set_seccomp_filter(j);
 		drop_ugid(j);
 		drop_caps(j, last_valid_cap);
 	}
@@ -2061,7 +2061,7 @@ void API minijail_enter(const struct minijail *j)
 		if (prctl(PR_ALT_SYSCALL, 1, j->alt_syscall_table))
 			pdie("prctl(PR_ALT_SYSCALL) failed");
 	}
-
+#if 0
 	/*
 	 * seccomp has to come last since it cuts off all the other
 	 * privilege-dropping syscalls :)
@@ -2073,6 +2073,7 @@ void API minijail_enter(const struct minijail *j)
 		}
 		pdie("prctl(PR_SET_SECCOMP) failed");
 	}
+#endif
 }
 
 /* TODO(wad): will visibility affect this variable? */

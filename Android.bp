@@ -36,6 +36,7 @@ cc_defaults {
         "-DHAVE_SECUREBITS_H",
         "-Wall",
         "-Werror",
+        "-Wno-unused-function",
     ],
     target: {
         darwin: {
@@ -55,6 +56,7 @@ cc_object {
         "-E",
         "-Wall",
         "-Werror",
+        "-Wno-unused-function",
     ],
 }
 
@@ -76,6 +78,7 @@ cc_object {
         "-E",
         "-Wall",
         "-Werror",
+        "-Wno-unused-function",
     ],
 }
 
